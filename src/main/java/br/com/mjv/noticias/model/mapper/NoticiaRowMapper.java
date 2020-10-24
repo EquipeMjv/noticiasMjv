@@ -7,6 +7,12 @@ import org.springframework.jdbc.core.RowMapper;
 
 import br.com.mjv.noticias.model.Noticia;
 
+/**
+ * classe RowMapper da classe de modelo {@link Noticia} da tabela TB_NOTICIA
+ * @author thiago
+ *
+ */
+
 public class NoticiaRowMapper implements RowMapper<Noticia> {
 
 	@Override

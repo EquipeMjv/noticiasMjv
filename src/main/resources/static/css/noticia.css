@@ -1,15 +1,5 @@
 @charset "UTF-8";
 
 .box {
-	margin-top: 170px;
-	width: 40%;
-
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.box__noticia {
-	margin: 20px;
+	margin-top: 20px;
 }

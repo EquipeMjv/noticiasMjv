@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,79 +18,33 @@
 	</head>
 	
 	<body>
+	
+		<div class="container">
+			<h1>Usuario: Thiago</h1>		
+		</div>
 		
 		<div class="container">
-			<div class= "box">
 			
-				<div class="card md-3 box__noticia">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<img src="https://picsum.photos/159/236" class="card-img" alt="...">
+			<c:forEach var="noticia" items="${noticias}">
+			
+				<div class="row justify-content-center box">
+					<div class="col-md-3">
+						<img src="https://picsum.photos/159/236" class="card-img" alt="...">
+					</div>
+					
+					<div class="col-md-4">
+						<div class="card-body">
+							<h5 class="card-title">${noticia.titulo}</h5>
+							
+							<p class="card-text">${noticia.descricao}</p>
+							
+							<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 						</div>
-						
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">Title</h5>
-								
-								<p class="card-text">
-									Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical 
-									Latin literature from 45 BC, making it over 2000 years old. 
-								</p>
-								
-								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							</div>
-						</div>
-						
 					</div>
 				</div>
-				
-				
-				<div class="card md-3 box__noticia">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<img src="https://picsum.photos/159/236" class="card-img" alt="...">
-						</div>
-						
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">Title</h5>
+
+			</c:forEach>
 								
-								<p class="card-text">
-									Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical 
-									Latin literature from 45 BC, making it over 2000 years old. 
-								</p>
-								
-								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				
-				
-				<div class="card md-3 box__noticia">
-					<div class="row no-gutters">
-						<div class="col-md-4">
-							<img src="https://picsum.photos/159/236" class="card-img" alt="...">
-						</div>
-						
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title">Title</h5>
-								
-								<p class="card-text">
-									Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical 
-									Latin literature from 45 BC, making it over 2000 years old. 
-								</p>
-								
-								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				
-			</div>
 		</div>
 	
 		<script 
