@@ -62,7 +62,7 @@
 		
 		<div class="container">
 			<div class="layout-box">
-				<c:forEach var="noticia" items="${noticias}">
+				<c:forEach var="noticia" items="${noticias.content}">
 				
 						<div class="card mb-3 layout-box__item" style="max-width: 600px;">
 							<div class="row no-gutters">
@@ -80,8 +80,37 @@
 						</div>
 	
 				</c:forEach>
+				
+				<div class="offset-sm-5">
+					<nav>
+						<ul class="pagination">
+							<li class="page-item disabled">
+								<a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a>
+							</li>
+							<li class="page-item"><a class="page-link" href="?page=0">1</a></li>
+							<li class="page-item"><a class="page-link" href="?page=1">2</a></li>
+							<li class="page-item"><a class="page-link" href="?page=2">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#"><span aria-hidden="true">&raquo;</span></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				
 			</div>
 		</div>
+		
+		<footer>
+			<div class="layout-footer">
+				<div class="container">
+					<p class="text-center">
+						Página desenvolvida durante a <mark>DevSchool</mark> e mantida pelo membros 
+						<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
+					</p>
+				</div>
+			</div>
+		</footer>
+		
 	
 		<script 
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
