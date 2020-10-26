@@ -51,7 +51,7 @@
 							</li>
 						</ul>
 						
-						<span class="layout-header--usuario">Usuario: <a href="#">Thiago</a></span>
+						<span class="layout-header--usuario">Usuario: <a href="#">Administrador</a></span>
 						
 					</div>
 				</div>
@@ -123,4 +123,4 @@
 			crossorigin="anonymous">
 		</script>
 	</body>
-</html
+</html>
