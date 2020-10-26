@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS TB_NOTICIA;
+DROP TABLE IF EXISTS TB_CLIENTE;
 
 --tabela noticia
 CREATE TABLE TB_NOTICIA (
@@ -6,6 +7,16 @@ CREATE TABLE TB_NOTICIA (
 	titulo VARCHAR(60) NOT NULL,
 	descricao VARCHAR(350) NOT NULL,
 	CONSTRAINT PK_ID_TB_NOTICIA PRIMARY KEY (id)
+);
+
+
+-- tabela usuario
+CREATE TABLE TB_CLIENTE (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(250) NOT NULL,
+  usuario VARCHAR(50) NOT NULL,
+  senha VARCHAR(15) NOT NULL,
+  CONSTRAINT PK_ID_TB_CLIENTE PRIMARY KEY (id)
 );
 
 
@@ -19,3 +30,11 @@ VALUES
 ('Vagabond', 'Releitura fictícia da vida de um dos espadachins mais famosos do Japão, o "Santo da Espada" Musashi Miyamoto. Sua ascensão de um espadachim sem nenhum desejo que não seja para se tornar "Invincible debaixo dos céus" para um guerreiro iluminado que lentamente aprende do importância de amigos íntimos, auto-reflexão e a própria vida.'),
 ('Bleach', 'Bleach segue as aventuras de Ichigo Kurosaki que após ganhar os poderes de Shinigami, através de uma Shinigami, Rukia Kuchiki. Com os seus novos poderes, Ichigo é forçado a assumir o dever de guiar almas boas ao mundo pós-vida à Soul Society, e derrotar os Hollows (monstros espirituais malignos).'),
 ('Naruto', 'Uzumaki Naruto é um menino que vive em Konoha ou Vila Oculta da Folha, a vila ninja do País do Fogo. Desde de pequeno, Naruto é visto por muitas pessoas como um monstro, por causa de besta de caudas chamada Kyuubi que habita seu corpo. Naruto sonha em se tornar o Hokage, um ninja poderoso e respeitado, para assim poder ser reconhecido por todos.');
+
+
+--inserindo dados na tabela usuario
+INSERT INTO TB_CLIENTE (nome, usuario, senha) VALUES
+('Administrador', 'admin', 'admin'),
+('Braian Fernandes Xavier', 'Braian', '123'),
+('Daniel de Oliveira', 'Daniel', '456'),
+('Thiago Costa Martins', 'Thiago', '789');
