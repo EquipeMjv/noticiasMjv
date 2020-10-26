@@ -18,15 +18,15 @@ public class NoticiaController {
 
 	@Autowired
 	private NoticiaService noticiaService;
-		
+			
 	@GetMapping
 	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable) {
-		
+			
 		Page<Noticia> noticias = noticiaService.listar(pageable);
 //		System.out.println("total paginas >>>>>> " + noticias.getTotalPages());
 //		System.out.println("total elementos >>>> " + noticias.getTotalElements());
 //		System.out.println("pagina atual >>>>>>> " + noticias.getNumber());
-		
+				
 		ModelAndView mv = new ModelAndView("noticia");
 		mv.addObject("noticias", noticias);
 		
