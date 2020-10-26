@@ -34,6 +34,7 @@ VALUES
 
 --inserindo dados na tabela usuario
 INSERT INTO TB_CLIENTE (nome, usuario, senha) VALUES
-  ('Braian Fernandes Xavier', 'Braian', '123'),
-  ('Daniel de Oliveira', 'Daniel', '456'),
-  ('Thiago Costa Martins', 'Thiago', '789');
+('Administrador', 'admin', 'admin'),
+('Braian Fernandes Xavier', 'Braian', '123'),
+('Daniel de Oliveira', 'Daniel', '456'),
+('Thiago Costa Martins', 'Thiago', '789');
