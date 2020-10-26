@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.layout-login {
+    transform: translateY(50%);
+	
+	width: 40%;
+	height: 40%;
+	padding: 30px;
+
+ 	margin-right: auto;
+	margin-left: auto;
+	
+	border-radius: 8px;
+	border: 1px solid #999;
+}
