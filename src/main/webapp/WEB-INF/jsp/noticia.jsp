@@ -12,17 +12,18 @@
 			crossorigin="anonymous" />
 			
 		<link 
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" 
+			rel="stylesheet" />
+			
+		<link 
 			rel="stylesheet"
 			type="text/css"
 			href="css/noticia.css" />
-			
-		<link 
-			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" 
-			rel="stylesheet" />
 	</head>
 	
 	<body>
 	
+		<!-- BARRA DE MENUS DA PÁGINA -->
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light layout-cabecalho layout-cabecalho--home">
 				<div class="container">
@@ -60,11 +61,12 @@
 			</nav>
 		</header>
 		
+		<!-- ANUNCIOS DA PÁGINA -->
 		<div class="container">
 			<div class="layout-box">
-				<c:forEach var="noticia" items="${noticias.content}">
+				<c:forEach var="noticia" items="${pagina.content}">
 				
-						<div class="card mb-3 layout-box__item" style="max-width: 600px;">
+						<div class="card mb-3 layout-box__item">
 							<div class="row no-gutters">
 								<div class="col-md-4">
 									<img src="https://picsum.photos/166/300" class="card-img">
@@ -80,34 +82,53 @@
 						</div>
 	
 				</c:forEach>
+			</div>	
+		</div
 				
-				<div class="offset-sm-5">
-					<nav>
-						<ul class="pagination">
-							<li class="page-item disabled">
-								<a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a>
-							</li>
-							<li class="page-item"><a class="page-link" href="?page=0">1</a></li>
-							<li class="page-item"><a class="page-link" href="?page=1">2</a></li>
-							<li class="page-item"><a class="page-link" href="?page=2">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#"><span aria-hidden="true">&raquo;</span></a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-				
-			</div>
+		<!-- PAGINAÇÃO -->
+		<div class=container>
+			<nav>
+				<ul class="pagination justify-content-center">
+					<!-- BOTÃO PÁGINA ANTERIOR-->
+					<c:if test="${not pagina.first}">
+						<li class="page-item">
+							<a class="page-link" href="?page=${pagina.number-1}"><span aria-hidden="true">&laquo;</span></a>
+						</li>
+					</c:if>
+					<c:if test="${pagina.first}">
+						<li class="page-item disabled">
+							<a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a>
+						</li>
+					</c:if>
+
+					<!-- BOTÕES PÁGINAS -->
+						<c:forEach var="i" begin="1" end="${pagina.totalPages}" step="1">
+							<li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+					</c:forEach>
+					
+					
+					<!-- BOTÃO PROXIMA PÁGINA -->
+						<c:if test="${not pagina.last}">
+						<li class="page-item">
+							<a class="page-link" href="?page=${pagina.number+1}"><span aria-hidden="true">&raquo;</span></a>
+						</li>
+					</c:if>
+					<c:if test="${pagina.last}">
+						<li class="page-item disabled">
+							<a class="page-link" href="#"><span aria-hidden="true">&raquo;</span></a>
+						</li>
+					</c:if>
+				</ul>
+			</nav>
 		</div>
 		
-		<footer>
-			<div class="layout-footer">
-				<div class="container">
-					<p class="text-center">
-						Página desenvolvida durante a <mark>DevSchool</mark> e mantida pelo membros 
-						<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
-					</p>
-				</div>
+		<!-- RODAPÉ PÁGINA -->
+		<footer class="layout-footer">
+			<div class="container">
+				<p class="text-center">
+					Página desenvolvida durante a <mark>DevSchool</mark> e mantida pelo membros 
+					<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
+				</p>
 			</div>
 		</footer>
 		

@@ -17,6 +17,7 @@ body {
 	margin-right: auto;
 	padding: 20px;
 	background-color: #fff;
+	max-width: 600px;
 }
 
 .layout-cabecalho {

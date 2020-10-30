@@ -1,4 +1,4 @@
-package br.com.mjv.noticias.controller;
+package br.com.mjv.noticias.noticia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.mjv.noticias.model.Noticia;
-import br.com.mjv.noticias.service.NoticiaService;
+import br.com.mjv.noticias.noticia.model.Noticia;
+import br.com.mjv.noticias.noticia.service.NoticiaService;
 
 @Controller
 @RequestMapping("/noticias")
@@ -22,13 +22,10 @@ public class NoticiaController {
 	@GetMapping
 	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable) {
 			
-		Page<Noticia> noticias = noticiaService.listar(pageable);
-//		System.out.println("total paginas >>>>>> " + noticias.getTotalPages());
-//		System.out.println("total elementos >>>> " + noticias.getTotalElements());
-//		System.out.println("pagina atual >>>>>>> " + noticias.getNumber());
+		Page<Noticia> paginaNoticias = noticiaService.listar(pageable);
 				
 		ModelAndView mv = new ModelAndView("noticia");
-		mv.addObject("noticias", noticias);
+		mv.addObject("pagina", paginaNoticias);
 		
 		return mv;
 	}

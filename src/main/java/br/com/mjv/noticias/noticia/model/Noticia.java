@@ -1,4 +1,4 @@
-package br.com.mjv.noticias.model;
+package br.com.mjv.noticias.noticia.model;
 
 /**
  * classe de modelo da tabela TB_NOTICIA

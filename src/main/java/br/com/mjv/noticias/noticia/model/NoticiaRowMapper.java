@@ -1,11 +1,9 @@
-package br.com.mjv.noticias.model.mapper;
+package br.com.mjv.noticias.noticia.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
-
-import br.com.mjv.noticias.model.Noticia;
 
 /**
  * classe RowMapper da classe de modelo {@link Noticia} da tabela TB_NOTICIA

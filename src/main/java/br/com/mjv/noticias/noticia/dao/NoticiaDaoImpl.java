@@ -1,4 +1,4 @@
-package br.com.mjv.noticias.dao;
+package br.com.mjv.noticias.noticia.dao;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import br.com.mjv.noticias.model.Noticia;
-import br.com.mjv.noticias.model.mapper.NoticiaRowMapper;
+import br.com.mjv.noticias.noticia.model.Noticia;
+import br.com.mjv.noticias.noticia.model.NoticiaRowMapper;
 
 @Repository
 public class NoticiaDaoImpl implements NoticiaDao {
