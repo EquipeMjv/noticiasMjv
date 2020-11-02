@@ -50,4 +50,20 @@ body {
     border-bottom: 1px solid #cccccc;
 }
 
+.layout-novaNoticia--botao {
+	font-weight: 700;
+}
+
+.layout-box__titulo {
+	margin: -20px -20px 20px -20px;
+	background-color: #555753;
+	padding: 20px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	
+	color: #fff;
+	
+	font-weight: 700;
+}
+
 

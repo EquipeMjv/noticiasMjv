@@ -18,7 +18,7 @@
 		<link 
 			rel="stylesheet"
 			type="text/css"
-			href="css/noticia.css" />
+			href="/css/noticia.css" />
 	</head>
 	
 	<body>
@@ -26,11 +26,17 @@
 		<!-- BARRA DE MENUS DA PÁGINA -->
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light layout-cabecalho layout-cabecalho--home">
+				
 				<div class="container">
 					<h4 class="layout-header--logo">AnimeNews MJV</h4>
 					<div class="collapse navbar-collapse">
 					
-						<form class="form-inline my-2 my-lg-0 offset-sm-2">
+						<c:if test="${usuarioLogado.get().usuario == 'admin'}">
+							<form class="form-inline my-2 my-lg-0 offset-sm-1">
+						</c:if>
+						<c:if test="${usuarioLogado.get().usuario != 'admin'}">
+							<form class="form-inline my-2 my-lg-0 offset-sm-2">
+						</c:if>
 							<input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
 							<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
 								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -41,8 +47,8 @@
 						</form>
 						
 						<ul class="navbar-nav ml-md-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="/noticias">Home <span class="sr-only">(current)</span></a>
+ 							<li class="nav-item active">
+								<a class="nav-link" href="/noticias">Home</span></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#">Top3Animes</a>
@@ -50,14 +56,24 @@
 							<li class="nav-item">
 								<a class="nav-link" href="https://github.com/EquipeMjv/noticiasMjv" target="blank">GitHub</a>
 							</li>
+							
+							<c:if test="${usuarioLogado.get().usuario == 'admin'}">
+								<li class="nav-item">
+									<a class="nav-link layout-novaNoticia--botao" href="/noticias/nova">Nova noticia</a>
+								</li>
+							</c:if>
 						</ul>
 						
-						<span class="layout-header--usuario">Usuario: <a href="#">${usuarioLogado.get().usuario}</a></span>
+						<c:if test="${usuarioLogado.get().usuario == 'admin'}">
+							<span class="layout-header--usuario">Usuario: <a href="#">${usuarioLogado.get().nome}</a></span>
+						</c:if>
+						<c:if test="${usuarioLogado.get().usuario != 'admin'}">
+							<span class="layout-header--usuario">Usuario: <a href="#">${usuarioLogado.get().usuario}</a></span>
+						</c:if>
 						
 					</div>
 				</div>
 			
-				
 			</nav>
 		</header>
 		

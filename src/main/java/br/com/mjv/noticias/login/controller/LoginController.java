@@ -44,7 +44,7 @@ public class LoginController {
 								
 			if (cliente.isPresent() && senha.equals(login.getSenha())) {
 				sessao.setAttribute("usuarioLogado", cliente);
-				return "redirect:noticias";
+				return "redirect:/noticias";
 			}
 			atributos.addFlashAttribute("mensagem", "Usuário e/ ou senha inválida.");
 			return "redirect:/login";

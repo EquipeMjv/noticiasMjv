@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,15 +30,36 @@ public class NoticiaController {
 		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
 		
 		if (usuarioLogado == null) {
-			return new ModelAndView("redirect:login");
+			return new ModelAndView("redirect:/login");
 		}
 		
 		Page<Noticia> paginaNoticias = noticiaService.listar(pageable);
 						
-		ModelAndView mv = new ModelAndView("noticia");
+		ModelAndView mv = new ModelAndView("/noticia/noticia");
 		mv.addObject("pagina", paginaNoticias);
 				
 		return mv;
 	}
 	
+	@GetMapping("/nova")
+	public ModelAndView criarNoticia(HttpServletRequest request) {
+		
+		HttpSession sessao = request.getSession();
+		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado == null) {
+			return new ModelAndView("redirect:/login");
+		}
+		
+		return new ModelAndView("noticia/noticiaForm");
+	}
+	
+	@PostMapping("/nova")
+	public String adicionarNoticia(Noticia noticia) {
+				
+		noticiaService.adicionar(noticia);
+		
+		return "redirect:/noticias";
+	}
+			
 }

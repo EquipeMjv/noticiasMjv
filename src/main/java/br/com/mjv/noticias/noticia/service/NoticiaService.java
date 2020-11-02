@@ -23,5 +23,10 @@ public class NoticiaService {
 	public Page<Noticia> listar(Pageable pageable) {
 		return dao.listarTodos(pageable);
 	}
+
+	public Long adicionar(Noticia noticia) {
+				
+		return dao.adicionar(noticia);
+	}
 	
 }

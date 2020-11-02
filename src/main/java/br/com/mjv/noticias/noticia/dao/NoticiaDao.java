@@ -13,4 +13,6 @@ public interface NoticiaDao  {
 	
 	Page<Noticia> listarTodos(Pageable pageable);
 	
+	Long adicionar(Noticia noticia);
+	
 }
