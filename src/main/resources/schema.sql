@@ -9,17 +9,27 @@ CREATE TABLE TB_NOTICIA (
 	imagem VARCHAR(500),
 	data_criacao DATETIME NOT NULL,
 	data_alteracao DATETIME,
-	CONSTRAINT PK_ID_TB_NOTICIA PRIMARY KEY (id)
+	CONSTRAINT PK_TB_NOTICIA_ID PRIMARY KEY (id)
 );
 
 
 -- tabela usuario
 CREATE TABLE TB_CLIENTE (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(250) NOT NULL,
-  usuario VARCHAR(50) NOT NULL,
-  senha VARCHAR(15) NOT NULL,
-  CONSTRAINT PK_ID_TB_CLIENTE PRIMARY KEY (id)
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(250) NOT NULL,
+	usuario VARCHAR(50) NOT NULL,
+	senha VARCHAR(15) NOT NULL,
+	CONSTRAINT PK_TB_CLIENTE_ID PRIMARY KEY (id)
+);
+
+
+-- tabela cliente_noticia
+CREATE TABLE TB_CLIENTE_NOTICIA (
+	cliente_id BIGINT NOT NULL, 
+	noticia_id BIGINT NOT NULL,
+	PRIMARY KEY (cliente_id, noticia_id),
+	CONSTRAINT FK_TB_CLIENTE_NOTICIA_TB_CLIENTE FOREIGN KEY (cliente_id) REFERENCES TB_CLIENTE (id),
+	CONSTRAINT FK_TB_CLIENTE_NOTICIA_TB_NOTICIA FOREIGN KEY (noticia_id) REFERENCES TB_NOTICIA (id)
 );
 
 
@@ -35,9 +45,26 @@ VALUES
 ('Naruto', 'Uzumaki Naruto é um menino que vive em Konoha ou Vila Oculta da Folha, a vila ninja do País do Fogo. Desde de pequeno, Naruto é visto por muitas pessoas como um monstro, por causa de besta de caudas chamada Kyuubi que habita seu corpo. Naruto sonha em se tornar o Hokage, um ninja poderoso e respeitado, para assim poder ser reconhecido por todos.','https://i.pinimg.com/originals/f6/53/b3/f653b31b57868d1a869595cfb238195d.jpg', LOCALTIMESTAMP);
 
 
---inserindo dados na tabela usuario
+--inserindo dados na tabela cliente
 INSERT INTO TB_CLIENTE (nome, usuario, senha) VALUES
 ('Administrador', 'admin', 'admin'),
 ('Braian Fernandes Xavier', 'Braian', '123'),
 ('Daniel de Oliveira', 'Daniel', '456'),
 ('Thiago Costa Martins', 'Thiago', '789');
+
+
+--inserindo dados na tabela cliente_noticia
+INSERT INTO TB_CLIENTE_NOTICIA (cliente_id, noticia_id) VALUES
+(4,2),
+(4,6),
+(4,5),
+(2,2),
+(2,5),
+(1,1),
+(1,3),
+(1,4),
+(3,3)
+
+
+
+

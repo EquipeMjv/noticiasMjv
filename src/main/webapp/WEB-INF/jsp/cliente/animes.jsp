@@ -72,7 +72,7 @@
 								</button>
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="#">Perfil</a>
-									<a class="dropdown-item" href="/clientes/animes/${usuarioLogado.get().id}">Meus Animes</a>
+									<a class="dropdown-item" href="#">Meus Animes</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#">Sair</a>
 								</div>
@@ -85,7 +85,7 @@
 								</button>
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="#">Perfil</a>
-									<a class="dropdown-item" href="/clientes/animes/${usuarioLogado.get().id}">Meus Animes</a>
+									<a class="dropdown-item" href="#">Meus Animes</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#">Sair</a>
 								</div>
@@ -98,79 +98,46 @@
 			</nav>
 		</header>
 		
-		<!-- ANUNCIOS DA PÁGINA -->
+		<!-- TABELA DE LISTAGEM DE ANIMES -->
 		<div class="container">
 			<div class="layout-box">
-				<c:forEach var="noticia" items="${pagina}">
 				
-						<div class="card mb-3 layout-box__item">
-							<div class="row no-gutters">
-								<div class="col-md-4">
-									<img src="${noticia.imagem}" class="card-img" />
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<h5 class="card-title">${noticia.titulo}</h5>
-										<p class="card-text">${noticia.descricao}</p>
-										<p class="card-text">
-											<small class="text-muted">
-												Postado: ${noticia.dataCriacao}
-												<%-- <fmt:formatDate value="${noticia.dataCriacao}" pattern="dd/MM/yyyy"/> --%>
-											</small>
-										</p>
-									</div>
-								</div>
-						    </div>
-						</div>
+				<table class="table table-dark">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Titulo</th>
+							<th scope="col">Ações</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<c:forEach var="anime" items="${animes}">
+							<tr>
+  								<td style="padding-left: 35px">${anime.noticiaId}</td>
+								<td>${anime.titulo}</td>
+								<td>
+									<a href="#">Excluir</a>
+								</td>
+							</tr>
+						</c:forEach>
+						
+						<c:if test="${animes.size() == 0}">
+							<tr>
+								<td colspan="3" class="text-center">
+									Não foi encontrado nenhum anime cadastrado para esse usuário
+									</td>
+							</tr>
+						</c:if>
+					</tbody>
+					
+				</table>
 	
-				</c:forEach>
 			</div>	
 		</div
 				
-		<!-- PAGINAÇÃO -->
-<%-- 		<div class=container>
-			<nav>
-				<ul class="pagination justify-content-center">
-					<!-- BOTÃO PÁGINA ANTERIOR-->
-					<c:if test="${not pagina.first}">
-						<li class="page-item">
-							<a class="page-link" href="?page=${pagina.number-1}"><span aria-hidden="true">&laquo;</span></a>
-						</li>
-					</c:if>
-					<c:if test="${pagina.first}">
-						<li class="page-item disabled">
-							<a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a>
-						</li>
-					</c:if>
-
-					<!-- BOTÕES PÁGINAS -->
-					<c:forEach var="i" begin="1" end="${pagina.totalPages}" step="1">
-						<c:if test="${pagina.number + 1 == i}">
-							<li class="page-item active"><a class="page-link" href="?page=${i-1}">${i}</a></li>
-						</c:if>
-						
-						<c:if test="${pagina.number + 1 != i}">
-							<li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
-						</c:if>
-					</c:forEach>
-					
-					
-					<!-- BOTÃO PROXIMA PÁGINA -->
-						<c:if test="${not pagina.last}">
-						<li class="page-item">
-							<a class="page-link" href="?page=${pagina.number+1}"><span aria-hidden="true">&raquo;</span></a>
-						</li>
-					</c:if>
-					<c:if test="${pagina.last}">
-						<li class="page-item disabled">
-							<a class="page-link" href="#"><span aria-hidden="true">&raquo;</span></a>
-						</li>
-					</c:if>
-				</ul>
-			</nav>
-		</div> --%>
 		
-		<!-- RODAPÉ PÁGINA -->
+<!-- 		<!-- RODAPÉ PÁGINA -->
 		<footer class="layout-footer">
 			<div class="container">
 				<p class="text-center">
@@ -178,7 +145,7 @@
 					<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
 				</p>
 			</div>
-		</footer>
+		</footer> -->
 		
 	
 		<script 
