@@ -19,7 +19,8 @@ public class NoticiaRowMapper implements RowMapper<Noticia> {
 		Noticia noticia = new Noticia();
 		noticia.setId(rs.getLong("id"));
 		noticia.setTitulo(rs.getString("titulo"));
-		noticia.setDescricao(rs.getString("descricao"));		
+		noticia.setDescricao(rs.getString("descricao"));
+		noticia.setImagem(rs.getString("imagem"));
 		
 		return noticia;
 	}

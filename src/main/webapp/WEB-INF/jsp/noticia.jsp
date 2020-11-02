@@ -69,7 +69,7 @@
 						<div class="card mb-3 layout-box__item">
 							<div class="row no-gutters">
 								<div class="col-md-4">
-									<img src="https://picsum.photos/166/300" class="card-img">
+									<img src="${noticia.imagem}" class="card-img" />
 								</div>
 								<div class="col-md-8">
 									<div class="card-body">
@@ -102,8 +102,14 @@
 					</c:if>
 
 					<!-- BOTÕES PÁGINAS -->
-						<c:forEach var="i" begin="1" end="${pagina.totalPages}" step="1">
+					<c:forEach var="i" begin="1" end="${pagina.totalPages}" step="1">
+						<c:if test="${pagina.number + 1 == i}">
+							<li class="page-item active"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+						</c:if>
+						
+						<c:if test="${pagina.number + 1 != i}">
 							<li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
+						</c:if>
 					</c:forEach>
 					
 					

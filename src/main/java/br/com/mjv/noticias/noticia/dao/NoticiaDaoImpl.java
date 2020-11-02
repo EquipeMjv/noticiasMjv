@@ -22,7 +22,7 @@ public class NoticiaDaoImpl implements NoticiaDao {
 	@Override
 	public List<Noticia> listarTodos() {
 		
-		String sql = "SELECT id, titulo, descricao FROM TB_NOTICIA";
+		String sql = "SELECT id, titulo, descricao, imagem FROM TB_NOTICIA";
 						
 		List<Noticia> noticias = template.query(sql, new MapSqlParameterSource(), new NoticiaRowMapper());
 						
@@ -35,7 +35,7 @@ public class NoticiaDaoImpl implements NoticiaDao {
 		Integer totalPorPagina = pageable.getPageSize();
 		Long inicio = pageable.getOffset();
 		
-		String sql = "SELECT id, titulo, descricao FROM TB_NOTICIA LIMIT :totalPorPagina OFFSET :inicio";
+		String sql = "SELECT id, titulo, descricao, imagem FROM TB_NOTICIA LIMIT :totalPorPagina OFFSET :inicio";
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("totalPorPagina", totalPorPagina);

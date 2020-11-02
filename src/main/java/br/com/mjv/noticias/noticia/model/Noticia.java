@@ -11,6 +11,7 @@ public class Noticia {
 	private Long id;
 	private String titulo;
 	private String descricao;
+	private String imagem;
 	
 	public Long getId() {
 		return id;
@@ -36,4 +37,12 @@ public class Noticia {
 		this.descricao = descricao;
 	}
 
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
 }
