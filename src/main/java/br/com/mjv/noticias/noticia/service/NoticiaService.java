@@ -1,5 +1,6 @@
 package br.com.mjv.noticias.noticia.service;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class NoticiaService {
 	@Autowired
 	private NoticiaDao dao;
 	
-	public List<Noticia> listar() {
+	public List<Noticia> listar() {		
 		return dao.listarTodos();
 	}
 	
@@ -25,8 +26,13 @@ public class NoticiaService {
 	}
 
 	public Long adicionar(Noticia noticia) {
-				
+		noticia.setDataCriacao(OffsetDateTime.now());
 		return dao.adicionar(noticia);
+	}
+	
+	public Noticia buscarPorId(Long noticiaId) {
+		Noticia noticia = dao.buscarPorId(noticiaId);
+		return noticia;
 	}
 	
 }

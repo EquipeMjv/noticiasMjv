@@ -1,12 +1,11 @@
 package br.com.mjv.noticias.noticia.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +22,26 @@ public class NoticiaController {
 	@Autowired
 	private NoticiaService noticiaService;
 			
+//	@GetMapping
+//	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
+//		
+//		HttpSession sessao = request.getSession();
+//		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
+//		
+//		if (usuarioLogado == null) {
+//			return new ModelAndView("redirect:/login");
+//		}
+//		
+//		Page<Noticia> paginaNoticias = noticiaService.listar(pageable);
+//						
+//		ModelAndView mv = new ModelAndView("/noticia/noticia");
+//		mv.addObject("pagina", paginaNoticias);
+//				
+//		return mv;
+//	}
+	
 	@GetMapping
-	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
+	public ModelAndView home(HttpServletRequest request) {
 		
 		HttpSession sessao = request.getSession();
 		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
@@ -33,13 +50,14 @@ public class NoticiaController {
 			return new ModelAndView("redirect:/login");
 		}
 		
-		Page<Noticia> paginaNoticias = noticiaService.listar(pageable);
+		List<Noticia> noticias = noticiaService.listar();
 						
 		ModelAndView mv = new ModelAndView("/noticia/noticia");
-		mv.addObject("pagina", paginaNoticias);
+		mv.addObject("pagina", noticias);
 				
 		return mv;
 	}
+	
 	
 	@GetMapping("/nova")
 	public ModelAndView criarNoticia(HttpServletRequest request) {

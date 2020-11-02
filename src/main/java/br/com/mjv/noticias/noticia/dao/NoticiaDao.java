@@ -15,4 +15,6 @@ public interface NoticiaDao  {
 	
 	Long adicionar(Noticia noticia);
 	
+	Noticia buscarPorId(Long noticiaId);
+	
 }

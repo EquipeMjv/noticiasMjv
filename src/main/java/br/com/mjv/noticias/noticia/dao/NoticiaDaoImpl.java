@@ -30,7 +30,8 @@ public class NoticiaDaoImpl implements NoticiaDao {
 	@Override
 	public List<Noticia> listarTodos() {
 		
-		String sql = "SELECT id, titulo, descricao, imagem FROM TB_NOTICIA";
+		String sql = "SELECT id, titulo, descricao, imagem, data_criacao, data_alteracao FROM TB_NOTICIA "
+				+ "ORDER BY data_criacao DESC";
 						
 		List<Noticia> noticias = template.query(sql, new MapSqlParameterSource(), new NoticiaRowMapper());
 						
@@ -43,7 +44,8 @@ public class NoticiaDaoImpl implements NoticiaDao {
 		Integer totalPorPagina = pageable.getPageSize();
 		Long inicio = pageable.getOffset();
 		
-		String sql = "SELECT id, titulo, descricao, imagem FROM TB_NOTICIA LIMIT :totalPorPagina OFFSET :inicio";
+		String sql = "SELECT id, titulo, descricao, imagem, data_criacao, data_alteracao FROM TB_NOTICIA "
+				+ "LIMIT :totalPorPagina OFFSET :inicio ORDER BY data_criacao DESC";
 		
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("totalPorPagina", totalPorPagina);
@@ -71,10 +73,26 @@ public class NoticiaDaoImpl implements NoticiaDao {
 		params.put("titulo", noticia.getTitulo());
 		params.put("descricao", noticia.getDescricao());
 		params.put("imagem", noticia.getImagem());
+		params.put("data_criacao", noticia.getDataCriacao());
+		params.put("data_alteracao", noticia.getDataAlteracao());
 		
 		Long result = (Long) insertCliente.executeAndReturnKey(params);
 		
 		return result;
+	}
+
+	@Override
+	public Noticia buscarPorId(Long noticiaId) {
+		
+		String sql = "SELECT id, titulo, descricao, imagem, data_criacao, data_alteracao FROM TB_NOTICIA "
+				+ "WHERE id = :noticiaId";
+		
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("noticiaId", noticiaId);
+		
+		Noticia noticia = template.queryForObject(sql, params, new NoticiaRowMapper());
+						
+		return noticia;
 	}
 
 }

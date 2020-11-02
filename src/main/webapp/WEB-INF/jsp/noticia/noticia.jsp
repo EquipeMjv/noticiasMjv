@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -80,7 +81,7 @@
 		<!-- ANUNCIOS DA PÁGINA -->
 		<div class="container">
 			<div class="layout-box">
-				<c:forEach var="noticia" items="${pagina.content}">
+				<c:forEach var="noticia" items="${pagina}">
 				
 						<div class="card mb-3 layout-box__item">
 							<div class="row no-gutters">
@@ -91,7 +92,12 @@
 									<div class="card-body">
 										<h5 class="card-title">${noticia.titulo}</h5>
 										<p class="card-text">${noticia.descricao}</p>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+										<p class="card-text">
+											<small class="text-muted">
+												Postado: ${noticia.dataCriacao}
+												<%-- <fmt:formatDate value="${noticia.dataCriacao}" pattern="dd/MM/yyyy"/> --%>
+											</small>
+										</p>
 									</div>
 								</div>
 						    </div>
@@ -102,7 +108,7 @@
 		</div
 				
 		<!-- PAGINAÇÃO -->
-		<div class=container>
+<%-- 		<div class=container>
 			<nav>
 				<ul class="pagination justify-content-center">
 					<!-- BOTÃO PÁGINA ANTERIOR-->
@@ -142,7 +148,7 @@
 					</c:if>
 				</ul>
 			</nav>
-		</div>
+		</div> --%>
 		
 		<!-- RODAPÉ PÁGINA -->
 		<footer class="layout-footer">

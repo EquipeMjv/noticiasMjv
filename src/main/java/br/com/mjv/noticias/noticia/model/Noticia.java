@@ -1,5 +1,7 @@
 package br.com.mjv.noticias.noticia.model;
 
+import java.time.OffsetDateTime;
+
 /**
  * classe de modelo da tabela TB_NOTICIA
  * @author thiago
@@ -12,6 +14,8 @@ public class Noticia {
 	private String titulo;
 	private String descricao;
 	private String imagem;
+	private OffsetDateTime dataCriacao;
+	private OffsetDateTime dataAlteracao;
 	
 	public Long getId() {
 		return id;
@@ -44,5 +48,21 @@ public class Noticia {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	
+
+	public OffsetDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(OffsetDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public OffsetDateTime getDataAlteracao() {
+		return dataAlteracao;
+	}
+
+	public void setDataAlteracao(OffsetDateTime dataAlteracao) {
+		this.dataAlteracao = dataAlteracao;
+	}
+		
 }
