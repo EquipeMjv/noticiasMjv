@@ -21,7 +21,7 @@ public class NoticiaController {
 
 	@Autowired
 	private NoticiaService noticiaService;
-			
+	
 //	@GetMapping
 //	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
 //		
@@ -51,7 +51,7 @@ public class NoticiaController {
 		}
 		
 		List<Noticia> noticias = noticiaService.listar();
-						
+		
 		ModelAndView mv = new ModelAndView("/noticia/noticia");
 		mv.addObject("pagina", noticias);
 				

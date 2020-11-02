@@ -67,21 +67,9 @@
 					</div>
 					
 				</form>
-				
 								
 			</div>
 		</div>
-		
-		<!-- RODAPÉ PÁGINA -->
-		<footer class="layout-footer">
-			<div class="container">
-				<p class="text-center">
-					Página desenvolvida durante a <mark>DevSchool</mark> e mantida pelo membros 
-					<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
-				</p>
-			</div>
-		</footer>
-		
 	
 		<script 
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 

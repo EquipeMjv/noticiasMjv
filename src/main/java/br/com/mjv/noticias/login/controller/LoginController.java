@@ -20,7 +20,7 @@ import br.com.mjv.noticias.exception.EntidadeNaoEncontradaException;
 import br.com.mjv.noticias.login.model.Login;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
@@ -28,12 +28,12 @@ public class LoginController {
 	@Autowired
 	private ClienteService clienteService;
 	
-	@GetMapping
+	@GetMapping("login")
 	public String login() {
 		return "login";
 	}
 		
-	@PostMapping
+	@PostMapping("login")
 	public String autenticar(Login login, RedirectAttributes atributos, HttpServletRequest request) {
 		try {
 			Optional<Cliente> cliente = Optional.of(clienteService.buscarClientePorUsuario(login.getUsuario()));
@@ -55,4 +55,14 @@ public class LoginController {
 			return "redirect:/login";
 		}
 	}
+	
+	@GetMapping("logout")
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession sessao = request.getSession();
+		sessao.invalidate();
+		
+		return "redirect:/login";
+	}
+	
 }
