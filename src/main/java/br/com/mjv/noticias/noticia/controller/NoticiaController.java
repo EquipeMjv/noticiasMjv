@@ -1,5 +1,8 @@
 package br.com.mjv.noticias.noticia.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,13 +23,20 @@ public class NoticiaController {
 	private NoticiaService noticiaService;
 			
 	@GetMapping
-	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable) {
-			
+	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
+		
+		HttpSession sessao = request.getSession();
+		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado == null) {
+			return new ModelAndView("redirect:login");
+		}
+		
 		Page<Noticia> paginaNoticias = noticiaService.listar(pageable);
-				
+						
 		ModelAndView mv = new ModelAndView("noticia");
 		mv.addObject("pagina", paginaNoticias);
-		
+				
 		return mv;
 	}
 	

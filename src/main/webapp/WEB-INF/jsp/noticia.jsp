@@ -22,7 +22,7 @@
 	</head>
 	
 	<body>
-	
+		
 		<!-- BARRA DE MENUS DA PÁGINA -->
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light layout-cabecalho layout-cabecalho--home">
@@ -52,7 +52,7 @@
 							</li>
 						</ul>
 						
-						<span class="layout-header--usuario">Usuario: <a href="#">Administrador</a></span>
+						<span class="layout-header--usuario">Usuario: <a href="#">${usuarioLogado.get().usuario}</a></span>
 						
 					</div>
 				</div>

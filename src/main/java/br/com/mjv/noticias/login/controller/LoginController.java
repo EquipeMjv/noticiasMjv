@@ -2,6 +2,9 @@ package br.com.mjv.noticias.login.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +34,16 @@ public class LoginController {
 	}
 		
 	@PostMapping
-	public String autenticar(Login login, RedirectAttributes atributos) {
+	public String autenticar(Login login, RedirectAttributes atributos, HttpServletRequest request) {
 		try {
 			Optional<Cliente> cliente = Optional.of(clienteService.buscarClientePorUsuario(login.getUsuario()));
 			String senha = cliente.get().getSenha();
 			
-			if (cliente.isPresent() && senha.equals(login.getSenha())) {	
+			HttpSession sessao = request.getSession();
+			
+								
+			if (cliente.isPresent() && senha.equals(login.getSenha())) {
+				sessao.setAttribute("usuarioLogado", cliente);
 				return "redirect:noticias";
 			}
 			atributos.addFlashAttribute("mensagem", "Usuário e/ ou senha inválida.");
