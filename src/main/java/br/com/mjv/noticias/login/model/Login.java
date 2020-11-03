@@ -1,4 +1,4 @@
-package br.com.mjv.noticias.model.dto;
+package br.com.mjv.noticias.login.model;
 
 public class Login {
 	
