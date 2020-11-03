@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import br.com.mjv.noticias.cliente.model.Cliente;
-import br.com.mjv.noticias.clientenoticia.model.ClienteRowMapper;
+import br.com.mjv.noticias.cliente.model.ClienteRowMapper;
 
 @Repository
 public class ClienteDaoImpl implements ClienteDao {

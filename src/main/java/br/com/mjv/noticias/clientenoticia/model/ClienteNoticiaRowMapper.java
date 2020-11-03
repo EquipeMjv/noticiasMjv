@@ -5,8 +5,6 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import br.com.mjv.noticias.cliente.model.ClienteNoticia;
-
 public class ClienteNoticiaRowMapper implements RowMapper<ClienteNoticia> {
 
 	@Override

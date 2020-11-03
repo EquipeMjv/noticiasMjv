@@ -1,4 +1,4 @@
-package br.com.mjv.noticias.cliente.model;
+package br.com.mjv.noticias.clientenoticia.model;
 
 public class ClienteNoticia {
 

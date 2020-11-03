@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import br.com.mjv.noticias.cliente.model.ClienteNoticia;
+import br.com.mjv.noticias.clientenoticia.model.ClienteNoticia;
 import br.com.mjv.noticias.clientenoticia.model.ClienteNoticiaRowMapper;
 
 @Repository
@@ -18,7 +18,7 @@ public class ClienteNoticiaDaoImpl implements ClienteNoticiaDao {
 	private NamedParameterJdbcTemplate template;
 
 	@Override
-	public List<ClienteNoticia> buscarAnimesPorIdCliente(Long clienteId) {
+	public List<ClienteNoticia> listarAnimesPorId(Long clienteId) {
 		try {
 			String sql = "SELECT cliente_id, noticia_id, titulo FROM TB_CLIENTE_NOTICIA cn "
 					+ "INNER JOIN TB_NOTICIA n ON n.id = cn.noticia_id "
@@ -46,6 +46,27 @@ public class ClienteNoticiaDaoImpl implements ClienteNoticiaDao {
 		params.addValue("noticiaId", noticiaId);
 		
 		template.update(sql, params);
+	}
+
+	@Override
+	public ClienteNoticia buscarAnimePorId(Long clienteId, Long noticiaId) {
+		try {
+			String sql = "SELECT cliente_id, noticia_id, titulo FROM TB_CLIENTE_NOTICIA cn "
+					+ "INNER JOIN TB_NOTICIA n ON n.id = cn.noticia_id "
+					+ "INNER JOIN TB_CLIENTE c ON c.id = cn.cliente_id "
+					+ "WHERE cn.cliente_id = :clienteId AND cn.noticia_id = :noticiaId";
+			
+			MapSqlParameterSource params = new MapSqlParameterSource();
+			params.addValue("clienteId", clienteId);
+			params.addValue("noticiaId", noticiaId);
+			
+			ClienteNoticia clienteNoticia = template.queryForObject(sql, params, new ClienteNoticiaRowMapper());
+			
+			return clienteNoticia;
+			
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
 
 }
