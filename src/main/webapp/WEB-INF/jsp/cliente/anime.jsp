@@ -65,7 +65,7 @@
 				</table>
 	
 			</div>	
-		</div
+		</div>
 
 		<c:import url="../layout/footer.jsp"></c:import>	
 	
