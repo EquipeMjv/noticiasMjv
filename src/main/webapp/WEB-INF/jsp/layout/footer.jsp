@@ -5,7 +5,6 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Meus animes</title>
 		<link 
 			rel="stylesheet" 
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
@@ -23,48 +22,17 @@
 	</head>
 	
 	<body>
-		
-		<!-- TABELA DE LISTAGEM DE ANIMES -->
-		<div class="container">
-			
-			<h1 class="text-center">Meus animes</h1>
-		
-			<div class="layout-box">
-				
-				<table class="table table-dark">
-					<thead>
-						<tr>
-							<th scope="col">Código</th>
-							<th scope="col">Titulo</th>
-							<th scope="col">Ações</th>
-						</tr>
-					</thead>
 					
-					<tbody>
-						<c:forEach var="anime" items="${animes}">
-							<tr>
-  								<td style="padding-left: 35px">${anime.noticiaId}</td>
-								<td>${anime.titulo}</td>
-								<td>
-									<a href="#"><span class="badge badge-danger">Excluir</span></a>
-								</td>
-							</tr>
-						</c:forEach>
-						
-						<c:if test="${animes.size() == 0}">
-							<tr>
-								<td colspan="3" class="text-center">
-									Não foi encontrado nenhum anime cadastrado para esse usuário
-								</td>
-							</tr>
-						</c:if>
-					</tbody>
-					
-				</table>
-	
-			</div>	
-		</div
-			
+		<!-- RODAPÉ PÁGINA -->
+		<footer class="layout-footer">
+			<div class="container">
+				<p class="text-center">
+					Página desenvolvida durante a <mark>DevSchool</mark> e mantida pelo membros 
+					<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
+				</p>
+			</div>
+		</footer>
+		
 	
 		<script 
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 

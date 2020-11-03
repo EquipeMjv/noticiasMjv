@@ -43,7 +43,7 @@ public class ClienteNoticiaController {
 		
 		List<ClienteNoticia> clienteNoticias = clienteNoticiaService.listarAnimesPorId(clienteId);
 		
-		ModelAndView mv = new ModelAndView("/cliente/animes");
+		ModelAndView mv = new ModelAndView("/cliente/anime");
 		mv.addObject("animes", clienteNoticias);
 		
 		LOGGER.info("Fim do método listarAnimes");

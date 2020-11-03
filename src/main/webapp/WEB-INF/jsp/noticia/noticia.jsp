@@ -24,79 +24,9 @@
 	
 	<body>
 		
-		<!-- BARRA DE MENUS DA PÁGINA -->
-		<header>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light layout-cabecalho layout-cabecalho--home">
-				
-				<div class="container">
-					<h4 class="layout-header--logo">AnimeNews MJV</h4>
-					<div class="collapse navbar-collapse">
-					
-						<c:if test="${usuarioLogado.get().usuario == 'admin'}">
-							<form class="form-inline my-2 my-lg-0 offset-sm-1">
-						</c:if>
-						<c:if test="${usuarioLogado.get().usuario != 'admin'}">
-							<form class="form-inline my-2 my-lg-0 offset-sm-2">
-						</c:if>
-							<input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
-							<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
-								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-									<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-								</svg>
-							</button>
-						</form>
-						
-						<ul class="navbar-nav ml-md-auto">
- 							<li class="nav-item active">
-								<a class="nav-link" href="/noticias">Home</span></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Top3Animes</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="https://github.com/EquipeMjv/noticiasMjv" target="blank">GitHub</a>
-							</li>
-							
-							<c:if test="${usuarioLogado.get().usuario == 'admin'}">
-								<li class="nav-item">
-									<a class="nav-link layout-novaNoticia--botao" href="/noticias/nova">Nova noticia</a>
-								</li>
-							</c:if>
-						</ul>
-						
-						<c:if test="${usuarioLogado.get().usuario == 'admin'}">
-							<div class="dropdown layout-header--usuario">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-								  ${usuarioLogado.get().nome}
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Perfil</a>
-									<a class="dropdown-item" href="/clientes/${usuarioLogado.get().id}/animes/">Meus Animes</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="/logout">Sair</a>
-								</div>
-							</div>
-						</c:if>
-						<c:if test="${usuarioLogado.get().usuario != 'admin'}">
-							<div class="dropdown layout-header--usuario">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-								  ${usuarioLogado.get().usuario}
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Perfil</a>
-									<a class="dropdown-item" href="/clientes/${usuarioLogado.get().id}/animes/">Meus Animes</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="/logout">Sair</a>
-								</div>
-							</div>
-						</c:if>
-						
-					</div>
-				</div>
-			
-			</nav>
-		</header>
+		
+		<c:import url="../layout/header.jsp"></c:import>
+		
 		
 		<!-- ANUNCIOS DA PÁGINA -->
 		<div class="container">
@@ -151,60 +81,10 @@
 				</c:forEach>
 			</div>	
 		</div
-				
-		<!-- PAGINAÇÃO -->
-<%-- 		<div class=container>
-			<nav>
-				<ul class="pagination justify-content-center">
-					<!-- BOTÃO PÁGINA ANTERIOR-->
-					<c:if test="${not pagina.first}">
-						<li class="page-item">
-							<a class="page-link" href="?page=${pagina.number-1}"><span aria-hidden="true">&laquo;</span></a>
-						</li>
-					</c:if>
-					<c:if test="${pagina.first}">
-						<li class="page-item disabled">
-							<a class="page-link" href="#"><span aria-hidden="true">&laquo;</span></a>
-						</li>
-					</c:if>
 
-					<!-- BOTÕES PÁGINAS -->
-					<c:forEach var="i" begin="1" end="${pagina.totalPages}" step="1">
-						<c:if test="${pagina.number + 1 == i}">
-							<li class="page-item active"><a class="page-link" href="?page=${i-1}">${i}</a></li>
-						</c:if>
-						
-						<c:if test="${pagina.number + 1 != i}">
-							<li class="page-item"><a class="page-link" href="?page=${i-1}">${i}</a></li>
-						</c:if>
-					</c:forEach>
-					
-					
-					<!-- BOTÃO PROXIMA PÁGINA -->
-						<c:if test="${not pagina.last}">
-						<li class="page-item">
-							<a class="page-link" href="?page=${pagina.number+1}"><span aria-hidden="true">&raquo;</span></a>
-						</li>
-					</c:if>
-					<c:if test="${pagina.last}">
-						<li class="page-item disabled">
-							<a class="page-link" href="#"><span aria-hidden="true">&raquo;</span></a>
-						</li>
-					</c:if>
-				</ul>
-			</nav>
-		</div> --%>
-		
-		<!-- RODAPÉ PÁGINA -->
-		<footer class="layout-footer">
-			<div class="container">
-				<p class="text-center">
-					Página desenvolvida durante a <mark>DevSchool</mark> e mantida pelo membros 
-					<em>Braian, Daniel e Thiago</em> da <strong>AnimeNews MJV</strong> - Out/2020
-				</p>
-			</div>
-		</footer>
-		
+
+		<c:import url="../layout/footer.jsp"></c:import>
+	
 	
 		<script 
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
