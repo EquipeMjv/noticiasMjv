@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	
+	background-color: #c0c0c0;
+}
+
+.layout-tabela__titulo {
+	font-weight: 700;
+	width: 100%;
+	margin-top: 100px;
+	padding: 15px;
+	
+	background-color: #151515;
+	color: #fff;
+}

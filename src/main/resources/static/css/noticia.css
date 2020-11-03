@@ -16,12 +16,12 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 20px;
-	background-color: #fff;
+	background-color: rgb(239,239,239);
+	max-width: 600px;
 }
 
 .layout-cabecalho {
     height: 60px;
-    line-height: 60px;
     border-bottom: 1px solid #cccccc;
 }
 
@@ -47,6 +47,28 @@ body {
 	background-color: #fff;
 	line-height: 60px;
     border-bottom: 1px solid #cccccc;
+}
+
+.layout-novaNoticia--botao {
+	font-weight: 700;
+}
+
+.layout-box__titulo {
+	margin: -20px -20px 20px -20px;
+	background-color: #555753;
+	padding: 20px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	
+	color: #fff;
+	
+	font-weight: 700;
+}
+
+.footer {
+	position:absolute;
+	bottom:0;
+	width:100%;
 }
 
 
