@@ -1,5 +1,11 @@
 package br.com.mjv.noticias.login.model;
 
+/**
+ * Modelo DTO utilizado para o processo de login
+ * @author thiago
+ *
+ */
+
 public class Login {
 	
 	private String usuario;

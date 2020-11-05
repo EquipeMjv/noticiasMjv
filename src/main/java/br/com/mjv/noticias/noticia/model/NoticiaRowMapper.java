@@ -7,7 +7,7 @@ import java.time.OffsetDateTime;
 import org.springframework.jdbc.core.RowMapper;
 
 /**
- * classe RowMapper da classe de modelo {@link Noticia} da tabela TB_NOTICIA
+ * Classe de mapeamento do modelo {@link Noticia} para a tabela TB_NOTICIA
  * @author thiago
  *
  */

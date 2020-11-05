@@ -1,5 +1,11 @@
 package br.com.mjv.noticias.clientenoticia.model;
 
+/**
+ * Modelo referente a tabela TB_CLIENTE_NOTICIA
+ * @author thiago
+ *
+ */
+
 public class ClienteNoticia {
 
 	private Long clienteId;
