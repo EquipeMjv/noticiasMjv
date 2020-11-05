@@ -1,5 +1,7 @@
 package br.com.mjv.noticias.cliente.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -12,9 +14,10 @@ import br.com.mjv.noticias.cliente.model.ClienteRowMapper;
 @Repository
 public class ClienteDaoImpl implements ClienteDao {
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClienteDaoImpl.class);
+	
 	@Autowired
 	private NamedParameterJdbcTemplate template;
-
 
 	@Override
 	public Cliente buscarClientePorUsuario(String usuario) {
@@ -29,6 +32,7 @@ public class ClienteDaoImpl implements ClienteDao {
 			return cliente;
 			
 		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(String.format("Não foi encontado cliente com o usuario %s.", usuario));
 			return null;
 		}
 	}

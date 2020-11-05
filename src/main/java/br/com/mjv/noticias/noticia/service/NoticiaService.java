@@ -1,38 +1,41 @@
 package br.com.mjv.noticias.noticia.service;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
-import br.com.mjv.noticias.noticia.dao.NoticiaDao;
 import br.com.mjv.noticias.noticia.model.Noticia;
 
-@Service
-public class NoticiaService {
+public interface NoticiaService {
+	
+	/**
+	 * Retorna uma lista de {@link Noticia}.
+	 * @param
+	 * @return
+	 */
+	public List<Noticia> listar();
+	
+	/**
+	 * Retorna uma página de {@link Noticia} tendo um {@link Pageable} como parâmetro e assim obtendo métodos
+	 * para trabalhar com paginação. 
+	 * @param pageable
+	 * @return
+	 */
+	public Page<Noticia> listar(Pageable pageable);
 
-	@Autowired
-	private NoticiaDao dao;
+	/**
+	 * Funcionalidade para incluir no banco de dados uma nova {@link Noticia}. 
+	 * @param noticia
+	 * @return
+	 */
+	public Long adicionar(Noticia noticia);
 	
-	public List<Noticia> listar() {		
-		return dao.listarTodos();
-	}
-	
-	public Page<Noticia> listar(Pageable pageable) {
-		return dao.listarTodos(pageable);
-	}
-
-	public Long adicionar(Noticia noticia) {
-		noticia.setDataCriacao(OffsetDateTime.now());
-		return dao.adicionar(noticia);
-	}
-	
-	public Noticia buscarPorId(Long noticiaId) {
-		Noticia noticia = dao.buscarPorId(noticiaId);
-		return noticia;
-	}
+	/**
+	 * Retorna uma {@link Noticia} com base no id informado.
+	 * @param noticiaId
+	 * @return
+	 */
+	public Noticia buscarPorId(Long noticiaId);
 	
 }
