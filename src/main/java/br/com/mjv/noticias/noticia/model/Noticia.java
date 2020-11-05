@@ -3,7 +3,7 @@ package br.com.mjv.noticias.noticia.model;
 import java.time.OffsetDateTime;
 
 /**
- * classe de modelo da tabela TB_NOTICIA
+ * Modelo referente a tabela TB_NOTICIA
  * @author thiago
  *
  */

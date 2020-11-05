@@ -21,7 +21,7 @@ import br.com.mjv.noticias.clientenoticia.service.ClienteNoticiaService;
 import br.com.mjv.noticias.exception.NoticiaJaAssociadaException;
 
 @Controller
-@RequestMapping("/clientes")
+@RequestMapping("/clientes/{clienteId}/animes")
 public class ClienteNoticiaController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClienteNoticiaController.class);
@@ -29,10 +29,9 @@ public class ClienteNoticiaController {
 	@Autowired
 	private ClienteNoticiaService clienteNoticiaService;
 	
-	
-	@GetMapping("/{clienteId}/animes")
+	@GetMapping()
 	public ModelAndView listarAnimes(@PathVariable Long clienteId, HttpServletRequest request) {
-		LOGGER.info("Inicio do método listarAnimes");
+		LOGGER.info("Inicio do método listarAnimes()");
 				
 		HttpSession sessao = request.getSession();
 		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
@@ -41,24 +40,24 @@ public class ClienteNoticiaController {
 			return new ModelAndView("redirect:/login");
 		}
 		
-		List<ClienteNoticia> clienteNoticias = clienteNoticiaService.listarAnimesPorId(clienteId);
+		List<ClienteNoticia> clienteNoticias = clienteNoticiaService.listarNoticiasPorIdCliente(clienteId);
 		
 		ModelAndView mv = new ModelAndView("/cliente/anime");
 		mv.addObject("animes", clienteNoticias);
 		
-		LOGGER.info("Fim do método listarAnimes");
+		LOGGER.info("Fim do método listarAnimes()");
 		return mv; 
 	}
 	
-	@PostMapping("/{clienteId}/animes/{noticiaId}")
+	@PostMapping("/{noticiaId}")
 	public ModelAndView associarAnimeCliente(@PathVariable Long clienteId, @PathVariable Long noticiaId, 
 			RedirectAttributes atributos, HttpServletRequest request) {
 		try {
-			LOGGER.info("Inicio do método associarAnimeCliente");
+			LOGGER.info("Inicio do método associarAnimeCliente()");
 			
-			clienteNoticiaService.associarAnimeCliente(clienteId, noticiaId);
+			clienteNoticiaService.associarNoticiaCliente(clienteId, noticiaId);
 			
-			LOGGER.info("Fim do método associarAnimeCliente");
+			LOGGER.info("Fim do método associarAnimeCliente()");
 			return listarAnimes(clienteId, request);
 			
 		} catch (NoticiaJaAssociadaException e) {

@@ -6,7 +6,10 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +23,8 @@ import br.com.mjv.noticias.noticia.model.NoticiaRowMapper;
 
 @Repository
 public class NoticiaDaoImpl implements NoticiaDao {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(NoticiaDaoImpl.class);
 	
 	@Autowired
 	private NamedParameterJdbcTemplate template;
@@ -83,16 +88,20 @@ public class NoticiaDaoImpl implements NoticiaDao {
 
 	@Override
 	public Noticia buscarPorId(Long noticiaId) {
-		
-		String sql = "SELECT id, titulo, descricao, imagem, data_criacao, data_alteracao FROM TB_NOTICIA "
-				+ "WHERE id = :noticiaId";
-		
-		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("noticiaId", noticiaId);
-		
-		Noticia noticia = template.queryForObject(sql, params, new NoticiaRowMapper());
-						
-		return noticia;
+		try {
+			String sql = "SELECT id, titulo, descricao, imagem, data_criacao, data_alteracao FROM TB_NOTICIA "
+					+ "WHERE id = :noticiaId";
+			
+			MapSqlParameterSource params = new MapSqlParameterSource();
+			params.addValue("noticiaId", noticiaId);
+			
+			Noticia noticia = template.queryForObject(sql, params, new NoticiaRowMapper());
+			
+			return noticia;
+		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(String.format("Não foi encontrada noticia de id %d cadastrada.", noticiaId));
+			return null;
+		}
 	}
 
 }

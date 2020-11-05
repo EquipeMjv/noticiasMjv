@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 /**
- * classe RowMapper da classe de modelo {@link Cliente} da tabela TB_CLIENTE
+ * Classe de mapeamento do modelo {@link Cliente} para a tabela TB_CLIENTE
  * @author thiago
  *
  */

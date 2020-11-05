@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,30 +20,15 @@ import br.com.mjv.noticias.noticia.service.NoticiaService;
 @Controller
 @RequestMapping("/noticias")
 public class NoticiaController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(NoticiaController.class);
 
 	@Autowired
 	private NoticiaService noticiaService;
-	
-//	@GetMapping
-//	public ModelAndView home(@PageableDefault(size = 2) Pageable pageable, HttpServletRequest request) {
-//		
-//		HttpSession sessao = request.getSession();
-//		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
-//		
-//		if (usuarioLogado == null) {
-//			return new ModelAndView("redirect:/login");
-//		}
-//		
-//		Page<Noticia> paginaNoticias = noticiaService.listar(pageable);
-//						
-//		ModelAndView mv = new ModelAndView("/noticia/noticia");
-//		mv.addObject("pagina", paginaNoticias);
-//				
-//		return mv;
-//	}
-	
+		
 	@GetMapping
 	public ModelAndView home(HttpServletRequest request) {
+		LOGGER.info("Inicio do método home()");
 		
 		HttpSession sessao = request.getSession();
 		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
@@ -54,13 +41,14 @@ public class NoticiaController {
 		
 		ModelAndView mv = new ModelAndView("/noticia/noticia");
 		mv.addObject("pagina", noticias);
-				
+
+		LOGGER.info("Fim do método home()");
 		return mv;
 	}
 	
-	
 	@GetMapping("/nova")
 	public ModelAndView criarNoticia(HttpServletRequest request) {
+		LOGGER.info("Inicio do método criarNoticia()");
 		
 		HttpSession sessao = request.getSession();
 		Object usuarioLogado = sessao.getAttribute("usuarioLogado");
@@ -69,14 +57,17 @@ public class NoticiaController {
 			return new ModelAndView("redirect:/login");
 		}
 		
+		LOGGER.info("Fim do método criarNoticia()");
 		return new ModelAndView("noticia/noticiaForm");
 	}
 	
 	@PostMapping("/nova")
 	public String adicionarNoticia(Noticia noticia) {
-				
+		LOGGER.info("Inicio do método adicionarNoticia()");
+		
 		noticiaService.adicionar(noticia);
 		
+		LOGGER.info("Fim do método adicionarNoticia()");
 		return "redirect:/noticias";
 	}
 			

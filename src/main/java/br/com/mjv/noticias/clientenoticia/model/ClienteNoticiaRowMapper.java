@@ -5,6 +5,12 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
+/**
+ * Classe de mapeamento do modelo {@link ClienteNoticia} para a tabela TB_CLIENTE_NOTICIA
+ * @author thiago
+ *
+ */
+
 public class ClienteNoticiaRowMapper implements RowMapper<ClienteNoticia> {
 
 	@Override
